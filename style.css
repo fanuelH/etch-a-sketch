@@ -16,3 +16,7 @@ div.box {
 div.box:hover {
   height: 35px;
 }
+
+.btn {
+  margin-bottom: 10px;
+}
