@@ -23,11 +23,15 @@ function createGrid(size = 256) {
     box.innerText = `${i + 1}`;
     box.style.width = `${calcSquareSize}px`;
     box.style.height = `${calcSquareSize}px`;
+    box.dataset.darkness = 0;
     box.addEventListener("mouseover", (e) => {
+      let currentDarkness = parseFloat(box.dataset.darkness || 0);
+      currentDarkness = Math.min(currentDarkness + 0.1, 1);
+      box.dataset.darkness = currentDarkness;
       const randomR = Math.floor(Math.random() * 256);
       const randomG = Math.floor(Math.random() * 256);
       const randomB = Math.floor(Math.random() * 256);
-      box.style.background = `rgb(${randomR}, ${randomG}, ${randomB})`;
+      box.style.background = `rgb(${randomR}, ${randomG}, ${randomB},${currentDarkness})`;
     });
     mainContainer.appendChild(box);
   }
